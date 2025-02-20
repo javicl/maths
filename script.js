@@ -3,41 +3,7 @@ let selectedCategory = '';
 let problems = [];
 let currentIndex = 0;
 let userAnswers = [];
-function generateAdditionProblem():
-    num1 = random.randint(1, 20)
-    num2 = random.randint(1, 20)
-    problem = "You have {num1} apples and buy {num2} more. How many do you have now?"
-    answer = num1 + num2
-    return {problem: problem, answer: answer}
 
-function generateSubtractionProblem():
-    num1 = random.randint(1, 20)
-    num2 = random.randint(1, num1)
-    problem = "You have {num1} candies and eat {num2}. How many are left?"
-    answer = num1 - num2
-    return {problem: problem, answer: answer}
-
-function generateMultiplicationProblem():
-    num1 = random.randint(1, 10)
-    num2 = random.randint(1, 10)
-    problem = "Each book costs ${num1}. How much do {num2} books cost?"
-    answer = num1 * num2
-    return {problem: problem, answer: answer}
-
-function generateDivisionProblem():
-    divisor = random.randint(1, 10)
-    multiple = random.randint(1, 10)
-    num1 = divisor * multiple
-    problem = "You have {num1} stickers and want to share them equally among {divisor} friends. How many does each friend get?"
-    answer = multiple
-    return {problem: problem, answer: answer}
-
-function generateMoneyProblem():
-    num1 = random.randint(1, 5)
-    price = round(random.uniform(0.5, 2.0), 2)
-    problem = "You buy {num1} apples at ${price} each. How much do you spend?"
-    answer = num1 * price
-    return {problem: problem, answer: answer}
 function selectProfile(profile) {
   currentProfile = profile;
   document.getElementById('profileSelection').style.display = 'none';
