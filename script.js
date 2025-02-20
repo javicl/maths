@@ -23,7 +23,32 @@ function generateProblems(category) {
     const problems = [];
     for (let i = 0; i < 10; i++) {
         let problem, answer;
-       if (category === 'fractions') {
+       if (category === 'basic') {
+            const operations = ['+', '-', '*', '/'];
+            const operation = operations[Math.floor(Math.random() * 4)];
+            if (operation === '+') {
+                const num1 = Math.floor(Math.random() * 100) + 1; // 1 to 100
+                const num2 = Math.floor(Math.random() * 100) + 1; // 1 to 100
+                problem = `What is ${num1} + ${num2}?`;
+                answer = num1 + num2; // Integer result
+            } else if (operation === '-') {
+                const num1 = Math.floor(Math.random() * 100) + 1; // 1 to 100
+                const num2 = Math.floor(Math.random() * num1) + 1; // 1 to num1
+                problem = `What is ${num1} - ${num2}?`;
+                answer = num1 - num2; // Integer result (non-negative)
+            } else if (operation === '*') {
+                const num1 = Math.floor(Math.random() * 12) + 1; // 1 to 12
+                const num2 = Math.floor(Math.random() * 12) + 1; // 1 to 12
+                problem = `What is ${num1} * ${num2}?`;
+                answer = num1 * num2; // Integer result
+            } else if (operation === '/') {
+                const divisor = Math.floor(Math.random() * 12) + 1; // 1 to 12
+                const multiple = Math.floor(Math.random() * 10) + 1; // 1 to 10
+                const dividend = divisor * multiple; // Ensures exact division
+                problem = `What is ${dividend} / ${divisor}?`;
+                answer = multiple; // Integer result
+            }
+        } else if (category === 'fractions') {
             const type = Math.random() < 0.5 ? 'of_number' : 'to_decimal';
             if (type === 'of_number') {
                 const denominator = Math.floor(Math.random() * 4) + 2; // 2 to 5
