@@ -3,7 +3,41 @@ let selectedCategory = '';
 let problems = [];
 let currentIndex = 0;
 let userAnswers = [];
+function generateAdditionProblem():
+    num1 = random.randint(1, 20)
+    num2 = random.randint(1, 20)
+    problem = "You have {num1} apples and buy {num2} more. How many do you have now?"
+    answer = num1 + num2
+    return {problem: problem, answer: answer}
 
+function generateSubtractionProblem():
+    num1 = random.randint(1, 20)
+    num2 = random.randint(1, num1)
+    problem = "You have {num1} candies and eat {num2}. How many are left?"
+    answer = num1 - num2
+    return {problem: problem, answer: answer}
+
+function generateMultiplicationProblem():
+    num1 = random.randint(1, 10)
+    num2 = random.randint(1, 10)
+    problem = "Each book costs ${num1}. How much do {num2} books cost?"
+    answer = num1 * num2
+    return {problem: problem, answer: answer}
+
+function generateDivisionProblem():
+    divisor = random.randint(1, 10)
+    multiple = random.randint(1, 10)
+    num1 = divisor * multiple
+    problem = "You have {num1} stickers and want to share them equally among {divisor} friends. How many does each friend get?"
+    answer = multiple
+    return {problem: problem, answer: answer}
+
+function generateMoneyProblem():
+    num1 = random.randint(1, 5)
+    price = round(random.uniform(0.5, 2.0), 2)
+    problem = "You buy {num1} apples at ${price} each. How much do you spend?"
+    answer = num1 * price
+    return {problem: problem, answer: answer}
 function selectProfile(profile) {
   currentProfile = profile;
   document.getElementById('profileSelection').style.display = 'none';
@@ -34,6 +68,80 @@ function generateProblems(category) {
       problems.push({ problem, answer });
     }
     // Similar logic for fractions, decimals, geometry, word problems
+    if category == 'fractions':
+    for i in 1 to 10:
+        type = random.choice(['of_number', 'to_decimal'])
+        if type == 'of_number':
+            numerator = random.randint(1, 5)
+            denominator = random.randint(2, 5)
+            number = random.randint(1, 20) * denominator  // ensure divisible
+            problem = "What is {numerator}/{denominator} of {number}?"
+            answer = (numerator / denominator) * number
+        else:  // to_decimal
+            fractions = [
+                ('1/2', 0.5), ('1/4', 0.25), ('3/4', 0.75),
+                ('1/5', 0.2), ('2/5', 0.4), ('3/5', 0.6), ('4/5', 0.8)
+            ]
+            fraction, decimal = random.choice(fractions)
+            problem = "What is {fraction} as a decimal?"
+            answer = decimal
+        problems.append({problem: problem, answer: answer})
+    if category == 'decimals':
+    operations = ['+', '-', '*', '/']
+    for i in 1 to 10:
+        operation = random.choice(operations)
+        if operation == '/':
+            divisor = round(random.uniform(0.1, 10.0), 1)
+            multiple = random.randint(1, 10)
+            dividend = round(divisor * multiple, 1)
+            problem = "{dividend} / {divisor}"
+            answer = multiple
+        else:
+            num1 = round(random.uniform(0.1, 10.0), 1)
+            num2 = round(random.uniform(0.1, 10.0), 1)
+            if operation == '-':
+                while num1 < num2:
+                    num1 = round(random.uniform(0.1, 10.0), 1)
+                    num2 = round(random.uniform(0.1, 10.0), 1)
+            problem = "{num1} {operation} {num2}"
+            if operation == '+':
+                answer = num1 + num2
+            elif operation == '-':
+                answer = num1 - num2
+            elif operation == '*':
+                answer = num1 * num2
+        problems.append({problem: problem, answer: answer})
+    if category == 'geometry':
+    shapes = ['rectangle', 'square']
+    for i in 1 to 10:
+        shape = random.choice(shapes)
+        if shape == 'rectangle':
+            length = random.randint(1, 10)
+            width = random.randint(1, 10)
+            question_type = random.choice(['area', 'perimeter'])
+            if question_type == 'area':
+                problem = "What is the area of a rectangle with length {length} and width {width}?"
+                answer = length * width
+            else:
+                problem = "What is the perimeter of a rectangle with length {length} and width {width}?"
+                answer = 2 * (length + width)
+        else:  // square
+            side = random.randint(1, 10)
+            question_type = random.choice(['area', 'perimeter'])
+            if question_type == 'area':
+                problem = "What is the area of a square with side {side}?"
+                answer = side * side
+            else:
+                problem = "What is the perimeter of a square with side {side}?"
+                answer = 4 * side
+        problems.append({problem: problem, answer: answer})
+
+  if category == 'word':
+    problemTypes = [generateAdditionProblem, generateSubtractionProblem, generateMultiplicationProblem, generateDivisionProblem, generateMoneyProblem]
+    for i in 1 to 10:
+        generator = random.choice(problemTypes)
+        problem, answer = generator()
+        problems.append({problem: problem, answer: answer})
   }
   return problems;
 }
