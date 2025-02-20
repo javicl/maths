@@ -27,9 +27,18 @@
   <p id="problem"></p>
   <input id="answerInput" type="text" readonly>
   <div id="numberPad">
-    <!-- Buttons for 0-9, ., backspace -->
+<div id="numberPad">
+    <button onclick="appendToAnswer('1')">1</button>
+    <button onclick="appendToAnswer('2')">2</button>
+    <button onclick="appendToAnswer('3')">3</button>
+    <button onclick="appendToAnswer('4')">4</button>
+    <button onclick="appendToAnswer('5')">5</button>
+    <button onclick="appendToAnswer('6')">6</button>
+    <button onclick="appendToAnswer('7')">7</button>
+    <button onclick="appendToAnswer('8')">8</button>
+    <button onclick="appendToAnswer('9')">9</button>
     <button onclick="appendToAnswer('0')">0</button>
-    <!-- ... other numbers ... -->
+    <button onclick="backspace()">⌫</button>
     <button onclick="appendToAnswer('.')">.</button>
     <button onclick="backspace()">⌫</button>
   </div>
