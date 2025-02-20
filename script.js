@@ -23,7 +23,17 @@ function generateProblems(category) {
     const problems = [];
     for (let i = 0; i < 10; i++) {
         let problem, answer;
-        
+          if (category === 'basic') {
+      let num1 = Math.floor(Math.random() * 100) + 1;
+      let num2 = Math.floor(Math.random() * 100) + 1;
+      let op = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)];
+      if (op === '-') num1 = Math.max(num1, num2); // Ensure non-negative
+      if (op === '/') num1 = num2 * (Math.floor(Math.random() * 10) + 1); // Integer division
+      let problem = `${num1} ${op} ${num2}`;
+      let answer = op === '+' ? num1 + num2 : op === '-' ? num1 - num2 : 
+                   op === '*' ? num1 * num2 : num1 / num2;
+      problems.push({ problem, answer });
+    }  
         if (category === 'fractions') {
             const type = Math.random() < 0.5 ? 'of_number' : 'to_decimal';
             if (type === 'of_number') {
