@@ -1,0 +1,37 @@
+<div id="profileSelection">
+  <h1>Welcome!</h1>
+  <button onclick="selectProfile('Aaron')">Aaron</button>
+  <button onclick="selectProfile('Oier')">Oier</button>
+</div>
+
+<div id="categorySelection" style="display:none;">
+  <h1 id="categoryTitle"></h1>
+  <button onclick="selectCategory('basic')">Basic Operations</button>
+  <button onclick="selectCategory('fractions')">Fractions</button>
+  <button onclick="selectCategory('decimals')">Decimals</button>
+  <button onclick="selectCategory('geometry')">Geometry</button>
+  <button onclick="selectCategory('word')">Word Problems</button>
+</div>
+
+<div id="test" style="display:none;">
+  <h1 id="testTitle"></h1>
+  <p id="problem"></p>
+  <input id="answerInput" type="text" readonly>
+  <div id="numberPad">
+    <!-- Buttons for 0-9, ., backspace -->
+    <button onclick="appendToAnswer('0')">0</button>
+    <!-- ... other numbers ... -->
+    <button onclick="appendToAnswer('.')">.</button>
+    <button onclick="backspace()">⌫</button>
+  </div>
+  <button id="nextButton" onclick="nextQuestion()">Next</button>
+  <div id="feedback" style="display:none;"></div>
+</div>
+
+<div id="results" style="display:none;">
+  <h1 id="resultsTitle"></h1>
+  <p id="score"></p>
+  <div id="details"></div>
+  <button onclick="tryAgain()">Try Again</button>
+  <button onclick="chooseAnotherCategory()">Choose Another Category</button>
+</div>
