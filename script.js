@@ -23,7 +23,8 @@ function generateProblems(category) {
     const problems = [];
     for (let i = 0; i < 10; i++) {
         let problem, answer;
-       if (category === 'basic') {
+        
+        if (category === 'basic') {
             const operations = ['+', '-', '*', '/'];
             const operation = operations[Math.floor(Math.random() * 4)];
             if (operation === '+') {
@@ -166,6 +167,7 @@ function generateProblems(category) {
     }
     return problems;
 }
+
 
 
 function showTest() {
